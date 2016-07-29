@@ -4,7 +4,7 @@ body {
 .todo-container {
   margin: 100px auto;
   background-color: #4BA7E6;
-  padding: 20px 40px 30px;
+  padding: 40px 40px 30px;
   max-width: 300px;
   border-radius: 2px;
 }
@@ -55,7 +55,7 @@ body {
   margin-bottom: 30px;
 }
 
-.todo-input {
+.todo-user-input {
   border: none;
   padding: 15px 20px;
   width: calc(100% - 40px);
