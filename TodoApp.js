@@ -1,16 +1,19 @@
 var Todo = React.createClass({
   getInitialState: function() {
     return {
-      items: ['Verycar', 'SX4C', 'Mazeda6', 'Impreza'],
+      items: ['Google', 'Amazon', 'Dropbox', 'Apple'],
       todo: ''
     };
   },
   handleSubmit: function(e) {
     e.preventDefault();
-    this.setState({
-      items: this.state.items.concat([this.state.todo]),
-      todo: ''
-    });
+
+    if (this.state.todo.length > 0) {
+      this.setState({
+        items: this.state.items.concat([this.state.todo]),
+        todo: ''
+      });
+    } 
   },
   onChange: function(e) {
     this.setState({
@@ -20,6 +23,10 @@ var Todo = React.createClass({
   render: function() {
     return (
       <div className="todo-container">
+        <div className="todo-heading-container">
+          <h2 className="todo-heading">Milton's Todos</h2>
+          <span className="todo-count">Todo counts: {this.state.items.length}</span>
+        </div>
         <TodoList items={this.state.items} />
         <form className="todo-form" onSubmit={this.handleSubmit}>
           <input className="todo-user-input" onChange={this.onChange} value={this.state.todo} type="text"/>
