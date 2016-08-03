@@ -43,10 +43,8 @@ body {
   margin-bottom: 8px;
   cursor: pointer;
   position: relative;
-  transition: .3s all;
 }
 .todo-item:hover {
-  transition: .3s all;
 }
 
 .todo-item:after {
