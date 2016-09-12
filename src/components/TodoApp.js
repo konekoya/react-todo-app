@@ -1,11 +1,20 @@
-var Todo = React.createClass({
-  getInitialState: function() {
-    return {
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+class Todo extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       items: ['Pay mobile phone bill', 'Pick up Andrew from daycare at 5 PM ', 'Grocery shopping', '10 minutes workout'],
       todo: ''
     };
-  },
-  handleSubmit: function(e) {
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRemoveTodo = this.handleRemoveTodo.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  handleSubmit(e) {
     e.preventDefault();
     if (this.state.todo.length > 0) {
       this.setState({
@@ -13,21 +22,24 @@ var Todo = React.createClass({
         todo: ''
       });
     } 
-  },
-  handleRemoveTodo: function(e) {
+  }
+
+  handleRemoveTodo(e) {
     let result = this.state.items.filter(function(item) {
         return item !== e.target.textContent;
     });
     this.setState({
       items: result
     })
-  },
-  onChange: function(e) {
+  }
+
+  onChange(e) {
     this.setState({
       todo: e.target.value
     });
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <div className="todo-container">
         <div className="todo-heading-container">
@@ -42,10 +54,12 @@ var Todo = React.createClass({
       </div>
     );
   }
-});
 
-var TodoList = React.createClass({
-  render: function() {
+}
+
+
+class TodoList extends React.Component{
+  render() {
     return (
       <ul className="todo-list" onClick={this.props.onRemoveTodo}>
         {
@@ -58,7 +72,6 @@ var TodoList = React.createClass({
       </ul>          
     );
   }
-});
+}
 
-// Render the main component and append it to DOM
-ReactDOM.render(<Todo />, document.getElementById('app'));
+export default Todo;
