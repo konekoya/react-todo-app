@@ -1,5 +1,5 @@
 # Super simple React project
 
 # Todos
-- Rewrite with ES6
-- Include Webpack as build tool
+- Add SASS support in webpack build
+- Try to deploy the app
