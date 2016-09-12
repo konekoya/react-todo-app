@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import List from './List';
+import Form from './Form';
 
 class Todo extends React.Component {
   constructor(props) {
@@ -46,30 +48,9 @@ class Todo extends React.Component {
           <h2 className="todo-heading">Kay's Todo List</h2>
           <span className="todo-count">Todo counts: {this.state.items.length}</span>
         </div>
-        <TodoList items={this.state.items} onRemoveTodo={this.handleRemoveTodo} />
-        <form className="todo-form" onSubmit={this.handleSubmit}>
-          <input className="todo-user-input" required onChange={this.onChange} value={this.state.todo} type="text"/>
-          <button className="todo-add">Add Todo</button>
-        </form>
+        <List items={this.state.items} onRemoveTodo={this.handleRemoveTodo} />
+        <Form onSubmit={this.handleSubmit} onChange={this.onChange} todo={this.state.todo} />
       </div>
-    );
-  }
-
-}
-
-
-class TodoList extends React.Component{
-  render() {
-    return (
-      <ul className="todo-list" onClick={this.props.onRemoveTodo}>
-        {
-          this.props.items.map(function(item) {
-            return (
-              <li className="todo-item">{item}</li>
-            );
-          })
-        }
-      </ul>          
     );
   }
 }
